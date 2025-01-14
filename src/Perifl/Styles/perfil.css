@@ -1,0 +1,89 @@
+.container-p {
+  border-radius: 1em;
+  overflow: hidden;
+  background-color: rgba(18, 18, 18, 0.94);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: auto;
+  height: auto;
+  margin: 3em;
+}
+
+.Seccion1-p img {
+  object-fit: cover;
+}
+
+.Opacity {
+  background-color: rgba(18, 18, 18, 0.94);
+  height: auto;
+  padding: 1em;
+}
+
+.Seccion2-p {
+  display: flex;
+  animation: imgMoveUpDown 10s infinite alternate;
+}
+
+@keyframes imgMoveUpDown {
+  0% {
+    background-position: center top;
+  }
+  100% {
+    background-position: center bottom;
+  }
+}
+
+.Generos {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.Generos h3 {
+  margin: 0.7em 0.7em;
+  padding: 10px;
+  border-radius: 0.5em;
+  background-color: #fe9500;
+}
+
+.Seccion3 {
+  grid-column-start: -3;
+  grid-column-end: -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  margin: 1em;
+  width: 98%;
+  height: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .container-p {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container-p {
+    grid-template-columns: auto;
+    width: auto;
+    height: auto;
+  }
+
+  .Seccion1-p img {
+    width: 100%;
+  }
+
+  .Opacity {
+    background-color: rgb(18, 18, 18);
+  }
+  .Opacity h3,
+  h4 {
+    font-size: 14px;
+  }
+}
+
+.tenor-gif-embed {
+  background-color: transparent;
+  border: none;
+}

@@ -1,0 +1,25 @@
+body {
+  background-color: rgb(36, 36, 36);
+}
+
+* {
+  color: white;
+}
+
+/*Barra de navegacion*/
+.nav-bar {
+  margin: 0 10px;
+  display: flex;
+  background-color: rgb(36, 36, 36);
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.Biblioteca {
+  margin: 1 0;
+}
+
+.logo {
+  margin-top: 13px;
+  width: 10em;
+}

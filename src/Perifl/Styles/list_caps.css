@@ -1,0 +1,20 @@
+.Capitulos {
+  padding: 0 0.2em;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  width: 100%;
+  height: 15em;
+  overflow: scroll;
+}
+
+.item {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(17, 17, 17, 0.8);
+  border-radius: 1em;
+  border: 1px solid white;
+}
