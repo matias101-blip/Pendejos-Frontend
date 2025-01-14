@@ -25,16 +25,6 @@ function Inicio() {
         </div>
       </div>
       <div className="Seccion2">
-        <div className="ContenedroNoticias ">
-          <div className="TituloNoticias">
-            <h2>Noticias: </h2>
-          </div>
-          <div className="Noticias">
-            <Noticias />
-            <Noticias />
-            <Noticias />
-          </div>
-        </div>
         <div className="sugerencias:">
           <div className="TituloSugerencias">
             <h2>Sugerencias:</h2>
