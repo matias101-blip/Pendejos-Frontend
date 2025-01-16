@@ -5,13 +5,19 @@
 }
 
 .container-L {
-  width: max-content;
-  height: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  overflow: scroll;
-  margin: 1.5em;
+  align-items: center;
+}
+
+.pagina {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
 }
 
 .Bar {

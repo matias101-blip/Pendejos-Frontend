@@ -1,7 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 let ToolBar = (props) => {
-  let caps = props.caps;
+  let caps = JSON.parse(props.caps);
   let { nombre, cap } = useParams();
+  cap = Number(cap);
   return (
     <div className="Bar">
       <ul>
@@ -12,8 +13,8 @@ let ToolBar = (props) => {
             </button>
           </Link>
         </li>
-        {cap > caps[0] && (
-          <Link to={`/${nombre}/${cap - 1}`}>
+        {caps.indexOf(parseFloat(cap)) != 0 && (
+          <Link to={`/${nombre}/${caps[caps.indexOf(cap) - 1]}`}>
             <li>
               <button>
                 <span>Prev</span>
@@ -26,8 +27,8 @@ let ToolBar = (props) => {
             <span>Caps</span>
           </button>
         </li>
-        {cap < caps[caps.length - 1] && (
-          <Link to={`/${nombre}/${Number(cap) + 1}`}>
+        {caps.indexOf(cap) != caps.indexOf(caps[caps.length - 1]) && (
+          <Link to={`/${nombre}/${caps[caps.indexOf(cap) + 1]}`}>
             <li>
               <button>
                 <span>Next</span>

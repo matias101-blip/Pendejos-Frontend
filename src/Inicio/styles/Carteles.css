@@ -10,5 +10,8 @@
 }
 .portada {
   width: 100%;
-  height: auto;
+  height: 355px;
+  object-fit: cover;
+  max-width: 250px;
+  max-height: 355px;
 }

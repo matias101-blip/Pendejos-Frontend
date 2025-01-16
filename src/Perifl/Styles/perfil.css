@@ -11,6 +11,7 @@
 
 .Seccion1-p img {
   object-fit: cover;
+  max-width: 290px;
 }
 
 .Opacity {

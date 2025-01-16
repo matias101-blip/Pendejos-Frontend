@@ -24,7 +24,10 @@ function Perfil(props) {
   return (
     <div className="container-p">
       <div className="Seccion1-p">
-        <img src={`/img/${portada}`} alt={nombre} />
+        <img
+          src={`http://localhost:8000/img/${nombre}/${portada.replace('.', '-')}`}
+          alt={nombre}
+        />
         <div
           className="tenor-gif-embed"
           data-postid="13000968370295317236"
