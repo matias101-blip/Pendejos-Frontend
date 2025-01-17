@@ -21,6 +21,9 @@ canvas {
 }
 
 .Bar {
+  margin-top: 1.5em;
+  position: fixed;
+  top: 0;
   width: 30em;
   justify-content: space-between;
 }
@@ -40,4 +43,9 @@ canvas {
 
 ul:focus {
   border: 3px solid red;
+}
+
+.Comentarios {
+  width: 90%;
+  margin-top: 3em;
 }

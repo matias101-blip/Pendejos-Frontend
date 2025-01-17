@@ -1,6 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Icon } from '@iconify/react';
 import Canvas from './componentes/canvas';
+import { DiscussionEmbed } from 'disqus-react';
 import './styles/Lector.css';
 
 let Lector = () => {
@@ -11,6 +13,7 @@ let Lector = () => {
       .then((response) => response.json())
       .then((data) => setPags(data))
       .catch((err) => console.error(err));
+    window.scrollTo(0, 0);
   }, [nombre, cap]);
 
   if (!Pags) {
@@ -24,6 +27,12 @@ let Lector = () => {
       </div>
     );
   } else {
+    const ConfigDisqus = {
+      url: `http://pendejoshub.site/${nombre}/${cap}`,
+      identifier: `${nombre}-${cap}`,
+      title: `Comentarios de ${nombre}: ${cap}`,
+      language: 'es',
+    };
     let caps = JSON.parse(Pags.capitulos);
     return (
       <div className="Lector">
@@ -32,7 +41,9 @@ let Lector = () => {
             <li>
               <Link to="/Inicio">
                 <button>
-                  <span>Inicio</span>
+                  <span>
+                    <Icon icon="material-symbols:home-rounded" width="1.4em" />
+                  </span>
                 </button>
               </Link>
             </li>
@@ -40,7 +51,12 @@ let Lector = () => {
               <Link to={`/${nombre}/${caps[caps.indexOf(Number(cap)) - 1]}`}>
                 <li>
                   <button>
-                    <span>Prev</span>
+                    <span>
+                      <Icon
+                        icon="material-symbols:skip-previous"
+                        width="1.4em"
+                      />
+                    </span>
                   </button>
                 </li>
               </Link>
@@ -48,7 +64,12 @@ let Lector = () => {
             <li>
               <Link to={`/${nombre}`}>
                 <button>
-                  <span>Caps</span>
+                  <span>
+                    <Icon
+                      icon="material-symbols:menu-book-sharp"
+                      width="1.4em"
+                    />
+                  </span>
                 </button>
               </Link>
             </li>
@@ -57,7 +78,9 @@ let Lector = () => {
               <Link to={`/${nombre}/${caps[caps.indexOf(Number(cap)) + 1]}`}>
                 <li>
                   <button>
-                    <span>Next</span>
+                    <span>
+                      <Icon icon="material-symbols:skip-next" width="1.4em" />
+                    </span>
                   </button>
                 </li>
               </Link>
@@ -73,6 +96,9 @@ let Lector = () => {
               capitulo={cap}
             />
           ))}
+        </div>
+        <div className="Comentarios">
+          <DiscussionEmbed shortname="pendejoshub-site" config={ConfigDisqus} />
         </div>
       </div>
     );

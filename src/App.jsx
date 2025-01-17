@@ -4,16 +4,14 @@ import { Route, Routes, Link } from 'react-router-dom';
 import Inicio from './Inicio/Inicio';
 import Perfil_Project from './Perifl/Perfil';
 import Lector from './Lector/Lector';
+import { Icon } from '@iconify/react';
 
 function App() {
   return (
     <div className="App">
-      <nav className="nav-bar">
+      <nav className="nav-bar" style={{ marginBottom: '1em' }}>
         <Link to="/Inicio">
           <img className="logo" src="/img/logo.png" alt="Logo.png" />
-        </Link>
-        <Link to="/Biblioteca">
-          <h4 className="Biblioteca">Biblioteca</h4>
         </Link>
       </nav>
       <Routes>
@@ -21,6 +19,9 @@ function App() {
         <Route path="/:nombre" element={<Perfil_Project />} />
         <Route path="/:nombre/:cap" element={<Lector />} />
       </Routes>
+      <foot>
+        <h3>PendejosScan 2025</h3>
+      </foot>
     </div>
   );
 }

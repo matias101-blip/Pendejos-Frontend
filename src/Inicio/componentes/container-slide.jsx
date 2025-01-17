@@ -4,7 +4,7 @@ function ContainerSlide(props) {
   const { nombre, portada, resumen } = props.proyectos;
 
   const fondo_img = {
-    backgroundImage: `url(/img/${portada})`,
+    backgroundImage: `url(http://localhost:8000/img/Aizawa Koharu tiene prisa por morir/portada-png)`,
     backgroundSize: 'cover',
     color: '#363435',
   };
@@ -13,7 +13,10 @@ function ContainerSlide(props) {
       <div className="container-slide" style={fondo_img}>
         <div className="container-opacity">
           <div className="portada-slide">
-            <img src={`/img/${portada}`} alt="" />
+            <img
+              src={`http://localhost:8000/img/${nombre}/${portada}`}
+              alt=""
+            />
           </div>
           <div className="info-slide">
             <div className="Titulo-slide">

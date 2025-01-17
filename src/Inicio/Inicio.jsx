@@ -25,19 +25,30 @@ function Inicio() {
         </div>
       </div>
       <div className="Seccion2">
-        <div>
-          <iframe
-            src="https://discord.com/widget?id=1027006600625541240&theme=dark"
-            width="350"
-            height="500"
-            allowtransparency="true"
-            frameborder="0"
-            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-          ></iframe>
+        <div className="Discord">
+          <div className="Discord-Head">
+            <h2>Nuestro Discord</h2>
+          </div>
+          <div className="Discord-Body">
+            <iframe
+              src="https://discord.com/widget?id=1027006600625541240&theme=dark"
+              width="350"
+              height="500"
+              allowtransparency="true"
+              frameborder="0"
+              sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+            ></iframe>
+          </div>
+          <div className="Discord-Foot">
+            <p>
+              Únete a nosotros y dime que este sitio está bugueado :v para poder
+              solucionarlo.
+            </p>
+          </div>
         </div>
         <div className="sugerencias:">
           <div className="TituloSugerencias">
-            <h2>Sugerencias:</h2>
+            <h2>Nuestros Proyectos:</h2>
           </div>
           <div className="cartelera">
             {proyectos.map((manga, index) => (

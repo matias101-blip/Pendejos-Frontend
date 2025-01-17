@@ -85,15 +85,10 @@
 /*Carteles de los proyectos*/
 .cartelera {
   margin-right: 0.7em;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto;
+  display: flex;
+  flex-wrap: wrap;
   height: min-content;
   gap: 1.3em;
-}
-
-.TituloSugerencias {
-  width: min-content;
 }
 
 /*Carteles de las noticias*/
@@ -127,6 +122,11 @@
 }
 
 .Discord {
+  width: 26em;
+}
+
+.Discord-Foot {
+  width: 20em;
 }
 
 @media screen and (max-width: 950px) {

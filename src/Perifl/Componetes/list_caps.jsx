@@ -8,14 +8,15 @@ function Caps(props) {
   if (capsList.length == 0) {
     return (
       <div className="Capitulos">
-        <h1>No hay capitulos disponibles</h1>
+        <h1>No hay capítulos disponibles</h1>
         <h4>
-          Hey no te desanimes este proyecto puede ser recien añadido, o el staff
-          esta dando mantenimiento, anda tomate un café y regresa mas tarde
+          ¡Hey! No te desanimes, este proyecto puede ser recién añadido o el
+          staff está dando mantenimiento. Anda, tómate un café y regresa más
+          tarde.
         </h4>
         <p>
-          En caso que siga sin aparecer capitulos, comunicate con nosotros en
-          nuestro discord.
+          En caso de que los capítulos sigan sin aparecer, comunícate con
+          nosotros en nuestro Discord.
         </p>
       </div>
     );
