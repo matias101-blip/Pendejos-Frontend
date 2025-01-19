@@ -39,7 +39,7 @@ let Lector = () => {
         <div className="Bar">
           <ul>
             <li>
-              <Link to="/Inicio">
+              <Link to="/">
                 <button>
                   <span>
                     <Icon icon="material-symbols:home-rounded" width="1.4em" />
