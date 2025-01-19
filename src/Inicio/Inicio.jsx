@@ -1,6 +1,17 @@
 import './Inicio.css';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import {
+  Grid,
+  GridItem,
+  Stack,
+  Flex,
+  Box,
+  Wrap,
+  WrapItem,
+  Heading,
+  Container,
+} from '@chakra-ui/react';
 import Carteles from './componentes/carteles';
 import Noticias from './componentes/New';
 import ContainerSlide from './componentes/container-slide';
@@ -16,19 +27,25 @@ function Inicio() {
     console.log(proyectos);
   }, []);
   return (
-    <div className="container">
-      <div className="Seccion1">
-        <h2>Lo nuevo de la Semana:</h2>
+    <Box className="container">
+      <Stack className="Seccion1" spacing="8">
+        <Heading>Lo nuevo de la Semana:</Heading>
         <div className="SlideSeccion1">
           {semanales.map((manga, index) => (
             <ContainerSlide key={index} proyectos={manga} />
           ))}
         </div>
-      </div>
-      <div className="Seccion2">
-        <div className="Discord">
+      </Stack>
+      <Flex
+        className="Seccion2"
+        borderColor="red"
+        wrap="wrap-revert"
+        gap="2em"
+        p="0.5em"
+      >
+        <Stack spacing="4" w="26em">
           <div className="Discord-Head">
-            <h2>Nuestro Discord</h2>
+            <Heading size="md">Nuestro Discord</Heading>
           </div>
           <div className="Discord-Body">
             <iframe
@@ -46,20 +63,19 @@ function Inicio() {
               solucionarlo.
             </p>
           </div>
-        </div>
-        <div className="sugerencias:">
+        </Stack>
+        <Stack spacing="4">
           <div className="TituloSugerencias">
-            <h2>Nuestros Proyectos:</h2>
+            <Heading size="md">Nuestros Proyectos:</Heading>
           </div>
-          <div className="cartelera">
+          <Grid templateColumns="repeat(auto-fit,minmax(12em,1fr))" gap="1em">
             {proyectos.map((manga, index) => (
               <Carteles key={index} proyectos={manga} />
             ))}
-          </div>
-        </div>
-      </div>
-      <div className="Seccion3"></div>
-    </div>
+          </Grid>
+        </Stack>
+      </Flex>
+    </Box>
   );
 }
 

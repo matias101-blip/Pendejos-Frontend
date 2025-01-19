@@ -1,34 +1,35 @@
 import '../styles/container-slide.css';
-
+import {
+  Box,
+  Text,
+  Heading,
+  Image,
+  HStack,
+  Container,
+  Stack,
+} from '@chakra-ui/react';
 function ContainerSlide(props) {
   const { nombre, portada, resumen } = props.proyectos;
+  var encode = encodeURIComponent(nombre);
 
-  const fondo_img = {
-    backgroundImage: `url(https://pendejosapi.space/img/Aizawa Koharu tiene prisa por morir/portada-png)`,
-    backgroundSize: 'cover',
-    color: '#363435',
-  };
   return (
-    <div className="Slider">
-      <div className="container-slide" style={fondo_img}>
-        <div className="container-opacity">
-          <div className="portada-slide">
-            <img
-              src={`https://pendejosapi.space/img/${nombre}/${portada}`}
-              alt=""
-            />
-          </div>
-          <div className="info-slide">
-            <div className="Titulo-slide">
-              <h2>{nombre}</h2>
-            </div>
-            <div className="Resumen-slide">
-              <p>{resumen}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box className="Slider">
+      <HStack
+        className="container-opacity"
+        wrap="wrap"
+        bgImage={`url(https://pendejosapi.space/img/${encode}/${portada})`}
+      >
+        <Image
+          w="14em"
+          src={`https://pendejosapi.space/img/${nombre}/${portada}`}
+          alt=""
+        />
+        <Stack className="info-slide" p="1em" gap="4">
+          <Heading size="md">{nombre}</Heading>
+          <Text overflowY="auto">{resumen}</Text>
+        </Stack>
+      </HStack>
+    </Box>
   );
 }
 

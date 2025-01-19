@@ -77,58 +77,6 @@
   animation: slide 25s infinite;
 }
 
-/*Segunda seccion*/
-.Seccion2 {
-  display: flex;
-}
-
-/*Carteles de los proyectos*/
-.cartelera {
-  margin-right: 0.7em;
-  display: flex;
-  flex-wrap: wrap;
-  height: min-content;
-  gap: 1.3em;
-}
-
-/*Carteles de las noticias*/
-.ContenedroNoticias {
-  display: flex;
-  flex-direction: column;
-}
-
-.Noticias {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0 6px;
-}
-
-.TituloNoticias {
-  width: min-content;
-}
-
-.Seccion3 {
-  margin-top: 4em;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2em;
-}
-
-.disqus_thread p {
-  color: black;
-}
-
-.Discord {
-  width: 26em;
-}
-
-.Discord-Foot {
-  width: 20em;
-}
-
 @media screen and (max-width: 950px) {
   .cartelera {
     grid-template-columns: 1fr 1fr 1fr;

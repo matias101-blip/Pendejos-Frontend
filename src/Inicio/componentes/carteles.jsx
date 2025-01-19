@@ -1,23 +1,30 @@
-import '../styles/Carteles.css';
-
 import { Link } from 'react-router-dom';
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Image,
+  LinkOverlay,
+  Heading,
+} from '@chakra-ui/react';
 function Carteles(props) {
   const { nombre, portada, resumen } = props.proyectos;
   return (
-    <div className="Cartelera">
-      <Link to={`/${nombre}`}>
-        <div className="Cuerpo">
-          <img
+    <Card>
+      <LinkOverlay href={`/${nombre}/`}>
+        <CardHeader className="Cuerpo">
+          <Image
+            w="100%"
             className="portada"
             src={`https://pendejosapi.space/img/${nombre}/${portada.replace('.', '-')}`}
             alt={portada}
           />
-          <div className="Info">
-            <h2 className="titulo">{nombre}</h2>
-          </div>
-        </div>
-      </Link>
-    </div>
+        </CardHeader>
+        <CardBody align="center" justify="end">
+          <Heading size="md">{nombre}</Heading>
+        </CardBody>
+      </LinkOverlay>
+    </Card>
   );
 }
 
