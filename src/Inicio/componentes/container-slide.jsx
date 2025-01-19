@@ -14,11 +14,7 @@ function ContainerSlide(props) {
 
   return (
     <Box className="Slider">
-      <HStack
-        className="container-opacity"
-        wrap="wrap"
-        bgImage={`url(https://pendejosapi.space/img/${encode}/${portada})`}
-      >
+      <HStack wrap="wrap">
         <Image
           w="14em"
           src={`https://pendejosapi.space/img/${nombre}/${portada}`}
