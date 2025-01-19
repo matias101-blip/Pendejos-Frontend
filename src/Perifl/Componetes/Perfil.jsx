@@ -25,7 +25,7 @@ function Perfil(props) {
     <div className="container-p">
       <div className="Seccion1-p">
         <img
-          src={`http://34.58.10.132/img/${nombre}/${portada.replace('.', '-')}`}
+          src={`https://34.58.10.132/img/${nombre}/${portada.replace('.', '-')}`}
           alt={nombre}
         />
         <div
