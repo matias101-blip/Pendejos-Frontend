@@ -5,7 +5,7 @@ function Perfil(props) {
   const { nombre, portada, resumen, folder, generos, capitulos } =
     props.proyecto;
   const fondo = {
-    backgroundImage: `url(/img/${portada})`,
+    backgroundImage: `http://34.58.10.132url(/img/${portada})`,
     backgroundSize: 'cover',
   };
 
@@ -25,7 +25,7 @@ function Perfil(props) {
     <div className="container-p">
       <div className="Seccion1-p">
         <img
-          src={`http://localhost:8000/img/${nombre}/${portada.replace('.', '-')}`}
+          src={`http://34.58.10.132/img/${nombre}/${portada.replace('.', '-')}`}
           alt={nombre}
         />
         <div

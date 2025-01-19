@@ -13,7 +13,7 @@ const Canvas = (props) => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
       fetch(
-        `http://localhost:8000/img/${name}/${capitulo.replace('.', '-')}/${number}`,
+        `http://34.58.10.132/img/${name}/${capitulo.replace('.', '-')}/${number}`,
       ).then(async (response) => {
         const svgData = await response.text();
         const parser = new DOMParser();

@@ -7,7 +7,7 @@ function Perfil_Project() {
   let { nombre } = useParams();
   const [Proyecto, setProyecto] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:8000/proyectos/${nombre}`)
+    fetch(`http://34.58.10.132/proyectos/${nombre}`)
       .then((response) => response.json())
       .then((data) => setProyecto(data))
       .catch((err) => console.log(err));

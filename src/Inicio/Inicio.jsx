@@ -8,7 +8,7 @@ import semanales from './semanal.json';
 function Inicio() {
   const [proyectos, setProyectos] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:8000/proyectos')
+    fetch('http://34.58.10.132/proyectos')
       .then((response) => response.json())
       .then((data) => setProyectos(data))
       .catch((error) => console.error('Error:', error));

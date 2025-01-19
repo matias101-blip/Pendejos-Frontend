@@ -9,7 +9,7 @@ function Carteles(props) {
         <div className="Cuerpo">
           <img
             className="portada"
-            src={`http://localhost:8000/img/${nombre}/${portada.replace('.', '-')}`}
+            src={`http://34.58.10.132/img/${nombre}/${portada.replace('.', '-')}`}
             alt={portada}
           />
           <div className="Info">
