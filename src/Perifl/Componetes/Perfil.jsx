@@ -5,7 +5,7 @@ function Perfil(props) {
   const { nombre, portada, resumen, folder, generos, capitulos } =
     props.proyecto;
   const fondo = {
-    backgroundImage: `http://34.58.10.132url(/img/${portada})`,
+    backgroundImage: `https://34.58.10.132url(/img/${portada})`,
     backgroundSize: 'cover',
   };
 
