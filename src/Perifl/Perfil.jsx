@@ -7,7 +7,7 @@ function Perfil_Project() {
   let { nombre } = useParams();
   const [Proyecto, setProyecto] = useState(null);
   useEffect(() => {
-    fetch(`https://34.58.10.132/proyectos/${nombre}`)
+    fetch(`https://pendejosapi.space/proyectos/${nombre}`)
       .then((response) => response.json())
       .then((data) => setProyecto(data))
       .catch((err) => console.log(err));

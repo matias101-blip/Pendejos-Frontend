@@ -13,7 +13,7 @@ const Canvas = (props) => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
       fetch(
-        `https://34.58.10.132/img/${name}/${capitulo.replace('.', '-')}/${number}`,
+        `https://pendejosapi.space/img/${name}/${capitulo.replace('.', '-')}/${number}`,
       ).then(async (response) => {
         const svgData = await response.text();
         const parser = new DOMParser();
@@ -34,9 +34,6 @@ const Canvas = (props) => {
         }
         v.start();
       });
-      // Renderizar el contenido SVG en el lienzo usando Canvg
-
-      // Escalar el contenido del lienzo
     };
 
     load();

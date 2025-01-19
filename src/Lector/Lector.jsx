@@ -9,7 +9,7 @@ let Lector = () => {
   const { nombre, cap } = useParams();
   const [Pags, setPags] = useState(null);
   useEffect(() => {
-    fetch(`https://34.58.10.132/api/${nombre}/${cap.replace('.', '-')}`)
+    fetch(`https://pendejosapi.space/api/${nombre}/${cap.replace('.', '-')}`)
       .then((response) => response.json())
       .then((data) => setPags(data))
       .catch((err) => console.error(err));

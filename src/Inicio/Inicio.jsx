@@ -8,7 +8,7 @@ import semanales from './semanal.json';
 function Inicio() {
   const [proyectos, setProyectos] = useState([]);
   useEffect(() => {
-    fetch('https://34.58.10.132/proyectos')
+    fetch('https://pendejosapi.space/proyectos')
       .then((response) => response.json())
       .then((data) => setProyectos(data))
       .catch((error) => console.error('Error:', error));
