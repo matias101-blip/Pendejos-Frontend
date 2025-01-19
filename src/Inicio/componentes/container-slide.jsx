@@ -2,9 +2,9 @@ import '../styles/container-slide.css';
 
 function ContainerSlide(props) {
   const { nombre, portada, resumen } = props.proyectos;
-
+  var nameCode = encodeURIComponent(nombre);
   const fondo_img = {
-    backgroundImage: `url(https://pendejosapi.space/img/Aizawa Koharu tiene prisa por morir/portada-png)`,
+    backgroundImage: `url(https://pendejosapi.space/img/${nameCode}/${portada})`,
     backgroundSize: 'cover',
     color: '#363435',
   };
