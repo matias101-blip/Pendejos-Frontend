@@ -1,5 +1,6 @@
 import './Inicio.css';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Carteles from './componentes/carteles';
 import Noticias from './componentes/New';
 import ContainerSlide from './componentes/container-slide';
@@ -16,6 +17,13 @@ function Inicio() {
   }, []);
   return (
     <div className="container">
+      <Helmet>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9551657009178750"
+          crossorigin="anonymous"
+        ></script>
+      </Helmet>
       <div className="Seccion1">
         <h2>Lo nuevo de la Semana:</h2>
         <div className="SlideSeccion1">
