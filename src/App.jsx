@@ -10,12 +10,12 @@ function App() {
   return (
     <div className="App">
       <nav className="nav-bar" style={{ marginBottom: '1em' }}>
-        <Link to="/Inicio">
+        <Link to="/">
           <img className="logo" src="/img/logo.png" alt="Logo.png" />
         </Link>
       </nav>
       <Routes>
-        <Route path="/Inicio" element={<Inicio />} />
+        <Route path="/" element={<Inicio />} />
         <Route path="/:nombre" element={<Perfil_Project />} />
         <Route path="/:nombre/:cap" element={<Lector />} />
       </Routes>

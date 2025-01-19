@@ -7,7 +7,7 @@ let ToolBar = (props) => {
     <div className="Bar">
       <ul>
         <li>
-          <Link to="/Inicio">
+          <Link to="/">
             <button>
               <span>Inicio</span>
             </button>
