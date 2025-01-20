@@ -1,4 +1,3 @@
-import './Inicio.css';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import {
@@ -11,6 +10,7 @@ import {
   WrapItem,
   Heading,
   Container,
+  HStack,
 } from '@chakra-ui/react';
 import Carteles from './componentes/carteles';
 import Noticias from './componentes/New';
@@ -28,13 +28,13 @@ function Inicio() {
   }, []);
   return (
     <Box className="container">
-      <Stack className="Seccion1" spacing="8">
+      <Stack className="Seccion1" spacing="8" align="center">
         <Heading>Lo nuevo de la Semana:</Heading>
-        <div className="SlideSeccion1">
+        <HStack w="56.5em" h="380px" overflow="hidden" justify="center">
           {semanales.map((manga, index) => (
             <ContainerSlide key={index} proyectos={manga} />
           ))}
-        </div>
+        </HStack>
       </Stack>
       <Flex
         className="Seccion2"
