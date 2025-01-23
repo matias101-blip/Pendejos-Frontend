@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import './style.css';
 import Perfil from './Componetes/Perfil';
 import { useEffect, useState } from 'react';
-
+import { Box } from '@chakra-ui/react';
 function Perfil_Project() {
   let { nombre } = useParams();
   const [Proyecto, setProyecto] = useState(null);
@@ -13,13 +13,22 @@ function Perfil_Project() {
       .catch((err) => console.log(err));
   }, [nombre]);
   return (
-    <div className="container_perfil">
+    <Box
+      pl={{
+        base: '1em',
+        md: '4em',
+      }}
+      pr={{
+        base: '1em',
+        md: '4em',
+      }}
+    >
       {Proyecto ? (
         <Perfil proyecto={Proyecto} />
       ) : (
         <p>Cargando...</p> // Mientras los datos se cargan, mostramos un mensaje
       )}
-    </div>
+    </Box>
   );
 }
 

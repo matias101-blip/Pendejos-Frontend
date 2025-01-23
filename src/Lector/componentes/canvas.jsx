@@ -1,49 +1,36 @@
 import { useEffect, useRef, useState } from 'react';
-import { Canvg, Scale } from 'canvg';
+import { Canvg } from 'canvg';
+import { Box } from '@chakra-ui/react';
+import { Layer, Stage, Image as KonvaImage } from 'react-konva';
+import useImage from 'use-image';
 
 const Canvas = (props) => {
-  const number = props.hojas;
+  const hojas = props.hojas;
   const name = props.nombre;
   const capitulo = props.capitulo;
-  const canvasRef = useRef(null);
-  const [svgW, setSvgW] = useState();
-
+  const [image, setImage] = useState(null);
+  const [ImageL] = useImage(image);
   useEffect(() => {
-    const load = async () => {
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
-      fetch(
-        `https://pendejosapi.space/img/${name}/${capitulo.replace('.', '-')}/${number}`,
-      ).then(async (response) => {
-        const svgData = await response.text();
-        const parser = new DOMParser();
-        const docSvg = parser.parseFromString(svgData, 'image/svg+xml');
-
-        const svgElement = docSvg.querySelector('svg');
-
-        const v = await Canvg.from(ctx, svgData);
-        const widt = parseInt(svgElement.getAttribute('width'));
-        const height = parseInt(svgElement.getAttribute('height'));
-        if (height > widt) {
-          setSvgW(widt * 0.65);
-          v.resize(widt * 0.65, height * 0.65);
-        } else {
-          console.log(widt, height);
-          setSvgW(widt * 0.5);
-          v.resize(widt * 0.5, height * 0.5);
-        }
-        v.start();
-      });
+    const loadImage = async () => {
+      let v = null;
+      let Canvas = document.createElement('canvas');
+      const context = Canvas.getContext('2d');
+      const responseSvg = await fetch(
+        'https://pendejosapi.space/img/Maria no Danzai/1/3',
+      );
+      const Svgdata = await responseSvg.text();
+      v = await Canvg.from(context, Svgdata);
+      v.start();
+      setImage(Canvas.toDataURL());
     };
-
-    load();
-  }, [number]);
-
+    loadImage();
+  }, [hojas]);
   return (
-    <div className="pagina" style={{ width: `${svgW}px`, height: 'auto' }}>
-      <canvas ref={canvasRef} style={{ padding: '0', border: '0' }} />
-    </div>
+    <Stage width={(window, innerWidth)} height={window.innerHeight}>
+      <Layer>
+        <KonvaImage image={ImageL} />
+      </Layer>
+    </Stage>
   );
 };
-
 export default Canvas;
