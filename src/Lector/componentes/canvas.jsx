@@ -13,7 +13,7 @@ const Canvas = (props) => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
       fetch(
-        `https://pendejosapi.space/img/${name}/${capitulo.replace('.', '-')}/${number}`,
+        `https://pendejosapi.space/img/${name}/${capitulo.replace('.', '-')}/${number}-svg`,
       ).then(async (response) => {
         const svgData = await response.text();
         const parser = new DOMParser();
