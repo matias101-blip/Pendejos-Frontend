@@ -1,36 +1,99 @@
-import { useEffect, useRef, useState } from 'react';
-import { Canvg } from 'canvg';
-import { Box } from '@chakra-ui/react';
+import { useEffect, useState, createContext, useContext } from 'react';
 import { Layer, Stage, Image as KonvaImage } from 'react-konva';
+import { isMobile } from 'react-device-detect';
 import useImage from 'use-image';
+
+const CtxHojas = createContext();
+
+const Hoja = (props) => {
+  const { index, capitulo, name, pagina, window, PoscY, onLoad } = props;
+  const [posX, setPosX] = useState(0);
+  const { sizeWindow, setSizeWindow } = useContext(CtxHojas);
+
+  const [Image] = useImage(
+    `https://pendejosapi.space/img/${name}/${capitulo}/${pagina}-webp`,
+  );
+  useEffect(() => {
+    if (Image) {
+      const ImageWOrg = Image.width;
+      const ImageHOrg = Image.height;
+      const hRatio = window.w / ImageWOrg;
+      const vRatio = 1080 / ImageHOrg;
+
+      const ratio = Math.min(hRatio, vRatio);
+      const newWidth = ImageWOrg * ratio;
+      const newHeight = ImageHOrg * ratio;
+
+      Image.width = newWidth;
+      Image.height = newHeight;
+
+      setPosX((window.w - newWidth) / 2);
+
+      setSizeWindow((prev) => ({
+        ...prev,
+        h: prev.h + newHeight,
+      }));
+
+      onLoad(newHeight); // Pasa la altura de la imagen al callback
+    }
+  }, [Image]);
+
+  return <KonvaImage image={Image} x={posX} y={PoscY} />;
+};
 
 const Canvas = (props) => {
   const hojas = props.hojas;
   const name = props.nombre;
   const capitulo = props.capitulo;
-  const [image, setImage] = useState(null);
-  const [ImageL] = useImage(image);
+  const [loadImages, setLoadImages] = useState(0);
+  const [imageHeights, setImageHeights] = useState([]); // Almacena alturas de imágenes
+
+  const [sizeWindow, setSizeWindow] = useState({
+    w: window.innerWidth,
+    h: 0,
+  });
+
   useEffect(() => {
-    const loadImage = async () => {
-      let v = null;
-      let Canvas = document.createElement('canvas');
-      const context = Canvas.getContext('2d');
-      const responseSvg = await fetch(
-        'https://pendejosapi.space/img/Maria no Danzai/1/3',
-      );
-      const Svgdata = await responseSvg.text();
-      v = await Canvg.from(context, Svgdata);
-      v.start();
-      setImage(Canvas.toDataURL());
-    };
-    loadImage();
-  }, [hojas]);
+    if (!isMobile) {
+      setSizeWindow((prev) => ({
+        ...prev,
+        w: 1024,
+      }));
+    }
+  }, []);
+
   return (
-    <Stage width={(window, innerWidth)} height={window.innerHeight}>
-      <Layer>
-        <KonvaImage image={ImageL} />
+    <Stage width={sizeWindow.w} height={sizeWindow.h}>
+      <Layer listening={false}>
+        <CtxHojas.Provider
+          value={{ sizeWindow, setSizeWindow, setImageHeights }}
+        >
+          {hojas.map((numero, index) => {
+            if (index > loadImages) return null;
+
+            const posY = imageHeights
+              .slice(0, index)
+              .reduce((a, b) => a + b, 0); // Suma las alturas previas
+            return (
+              <Hoja
+                key={index}
+                capitulo={capitulo}
+                name={name}
+                pagina={numero}
+                window={{ w: sizeWindow.w, h: sizeWindow.h }}
+                index={index}
+                PoscY={posY}
+                onLoad={(height) => {
+                  setImageHeights((prev) => [...prev, height]); // Guarda la altura de la imagen
+                  setLoadImages((prev) => prev + 1);
+                }}
+              />
+            );
+          })}
+        </CtxHojas.Provider>
       </Layer>
     </Stage>
   );
 };
+
 export default Canvas;
