@@ -41,12 +41,13 @@ const Hoja = (props) => {
   return <KonvaImage image={Image} x={posX} y={PoscY} />;
 };
 
-const Canvas = (props) => {
+const Canvas = (props, { children }) => {
   const hojas = props.hojas;
   const name = props.nombre;
   const capitulo = props.capitulo;
   const [loadImages, setLoadImages] = useState(0);
-  const [imageHeights, setImageHeights] = useState([]); // Almacena alturas de imágenes
+  const [imageHeights, setImageHeights] = useState([]);
+  const [pags, setPags] = useState([]);
 
   const [sizeWindow, setSizeWindow] = useState({
     w: window.innerWidth,
@@ -61,38 +62,37 @@ const Canvas = (props) => {
       }));
     }
   }, []);
-
+  const addPage = () => {
+    setPags((prevPags) => [
+      ...prevPags,
+      <Hoja
+        id={prevPags.length + 1}
+        key={prevPags.length}
+        capitulo={3}
+        name={name}
+        pagina={1}
+        window={{ w: sizeWindow.w, h: sizeWindow.h }}
+        PoscY={imageHeights}
+        onLoad={(height) => {
+          setImageHeights((prev) => [...prev, height]); // Guarda la altura de la imagen
+          setLoadImages((prev) => prev + 1);
+        }}
+      />,
+    ]);
+  };
   return (
-    <Stage width={sizeWindow.w} height={sizeWindow.h}>
-      <Layer listening={false}>
-        <CtxHojas.Provider
-          value={{ sizeWindow, setSizeWindow, setImageHeights }}
-        >
-          {hojas.map((numero, index) => {
-            if (index > loadImages) return null;
-
-            const posY = imageHeights
-              .slice(0, index)
-              .reduce((a, b) => a + b, 0); // Suma las alturas previas
-            return (
-              <Hoja
-                key={index}
-                capitulo={capitulo}
-                name={name}
-                pagina={numero}
-                window={{ w: sizeWindow.w, h: sizeWindow.h }}
-                index={index}
-                PoscY={posY}
-                onLoad={(height) => {
-                  setImageHeights((prev) => [...prev, height]); // Guarda la altura de la imagen
-                  setLoadImages((prev) => prev + 1);
-                }}
-              />
-            );
-          })}
-        </CtxHojas.Provider>
-      </Layer>
-    </Stage>
+    <div>
+      <Stage width={sizeWindow.w} height={sizeWindow.h}>
+        <Layer listening={false}>
+          <CtxHojas.Provider
+            value={{ sizeWindow, setSizeWindow, setImageHeights }}
+          >
+            {pags}
+          </CtxHojas.Provider>
+        </Layer>
+      </Stage>
+      <button onClick={addPage}>Dame click!!</button>
+    </div>
   );
 };
 
