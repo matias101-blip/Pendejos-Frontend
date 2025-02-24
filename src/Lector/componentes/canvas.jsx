@@ -39,13 +39,9 @@ const Canvas = (props) => {
   const name = props.nombre;
   const capitulo = props.capitulo;
   const [loadImages, setLoadImages] = useState(0);
-  const [imageHeights, setImageHeights] = useState([]);
+  const [imageSize, setImageSize] = useState([]);
   const [pags, setPags] = useState([]);
   const [indexPag, setIndexPag] = useState(0);
-  const [sizeWindow, setSizeWindow] = useState({
-    w: window.innerWidth,
-    h: 0,
-  });
 
   const { ref, inView } = useInView({
     threshold: 1,
@@ -66,6 +62,7 @@ const Canvas = (props) => {
       },
     ]);
     setIndexPag(indexPag + 1);
+    setLoadImages((prev) => prev + 1);
   };
 
   return (
