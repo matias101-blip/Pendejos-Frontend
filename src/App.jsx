@@ -3,7 +3,7 @@ import Inicio from './Inicio/Inicio';
 import Perfil_Project from './Perifl/Perfil';
 import Lector from './Lector/Lector';
 import { Icon } from '@iconify/react';
-import { Box, Link as ChaKraLink, Image } from '@chakra-ui/react';
+import { Box, Link as ChaKraLink, Image, Card } from '@chakra-ui/react';
 function App() {
   return (
     <div className="App">
@@ -17,17 +17,16 @@ function App() {
         <Route path="/:nombre" element={<Perfil_Project />} />
         <Route path="/:nombre/:cap" element={<Lector />} />
       </Routes>
-      <Box
+      <Card
         w="100%"
         h="4em"
         mt="3em"
         display="flex"
         alignItems="center"
         justifyContent="center"
-        bg="#323232"
       >
         <h3>PendejosScan 2025</h3>
-      </Box>
+      </Card>
     </div>
   );
 }

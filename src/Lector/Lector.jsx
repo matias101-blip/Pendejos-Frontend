@@ -15,7 +15,6 @@ let Lector = () => {
       .catch((err) => console.error(err));
     window.scrollTo(0, 0);
   }, [nombre, cap]);
-
   if (!Pags) {
     return <h1>Recibiendo los datos del sv UwU</h1>;
   } else if (!Pags.Succes) {
@@ -36,31 +35,56 @@ let Lector = () => {
     let caps = JSON.parse(Pags.capitulos);
     return (
       <Box className="Lector">
-        <Box w="100%" display="flex" justifyContent="center">
+        <Box
+          w="100%"
+          display="flex"
+          justifyContent="center"
+          mb="1.5em"
+          as="nav"
+          position="sticky"
+          top="0"
+          zIndex="900"
+        >
           <HStack spacing="6">
             <Link to="/">
-              <Button>
-                <Icon icon="material-symbols:home-rounded" width="1.4em" />
+              <Button colorScheme="whiteAlpha">
+                <Icon
+                  icon="material-symbols:home-rounded"
+                  width="1.4em"
+                  color="orange"
+                />
               </Button>
             </Link>
             {caps.indexOf(Number(cap)) != 0 && (
               <Link to={`/${nombre}/${caps[caps.indexOf(Number(cap)) - 1]}`}>
-                <Button>
-                  <Icon icon="material-symbols:skip-previous" width="1.4em" />
+                <Button colorScheme="whiteAlpha">
+                  <Icon
+                    icon="material-symbols:skip-previous"
+                    width="1.4em"
+                    color="orange"
+                  />
                 </Button>
               </Link>
             )}
             <Link to={`/${nombre}`}>
-              <Button>
-                <Icon icon="material-symbols:menu-book-sharp" width="1.4em" />
+              <Button colorScheme="whiteAlpha">
+                <Icon
+                  icon="material-symbols:menu-book-sharp"
+                  width="1.4em"
+                  color="orange"
+                />
               </Button>
             </Link>
             {caps.indexOf(Number(cap)) !=
               caps.indexOf(caps[caps.length - 1]) && (
               <Link to={`/${nombre}/${caps[caps.indexOf(Number(cap)) + 1]}`}>
-                <Button>
+                <Button colorScheme="whiteAlpha">
                   <span>
-                    <Icon icon="material-symbols:skip-next" width="1.4em" />
+                    <Icon
+                      icon="material-symbols:skip-next"
+                      width="1.4em"
+                      color="orange"
+                    />
                   </span>
                 </Button>
               </Link>
@@ -70,9 +94,9 @@ let Lector = () => {
         <Box display="flex" flexDir="column" alignItems="center">
           <Canvas hojas={Pags.Hojas} nombre={Pags.name} capitulo={cap} />
         </Box>
-        {/*        <div className="Comentarios">
+        <Box p="1.5em">
           <DiscussionEmbed shortname="pendejoshub-site" config={ConfigDisqus} />
-        </div>*/}
+        </Box>
       </Box>
     );
   }
