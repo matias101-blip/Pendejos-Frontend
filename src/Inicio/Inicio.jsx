@@ -1,8 +1,7 @@
-import './Inicio.css';
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import './Inicio.css';
+import { Grid, Stack, Flex, Box, Heading, HStack } from '@chakra-ui/react';
 import Carteles from './componentes/carteles';
-import Noticias from './componentes/New';
 import ContainerSlide from './componentes/container-slide';
 import semanales from './semanal.json';
 
@@ -15,20 +14,43 @@ function Inicio() {
       .catch((error) => console.error('Error:', error));
     console.log(proyectos);
   }, []);
+
   return (
-    <div className="container">
-      <div className="Seccion1">
-        <h2>Lo nuevo de la Semana:</h2>
-        <div className="SlideSeccion1">
+    <Box className="container">
+      <Stack className="Seccion1" spacing="8" align="center">
+        <Heading>Lo nuevo de la Semana:</Heading>
+        <HStack
+          mb="1.2em"
+          spacing="0"
+          w={{
+            base: '20em',
+            md: '56em',
+            sm: '26em',
+          }}
+          h={{
+            base: '45em',
+            md: '380px',
+          }}
+          overflow="hidden"
+          borderRadius="0.4em"
+        >
           {semanales.map((manga, index) => (
-            <ContainerSlide key={index} proyectos={manga} />
+            <Box className="Slider" key={index}>
+              <ContainerSlide proyectos={manga} />
+            </Box>
           ))}
-        </div>
-      </div>
-      <div className="Seccion2">
-        <div className="Discord">
+        </HStack>
+      </Stack>
+      <Flex
+        className="Seccion2"
+        borderColor="red"
+        wrap="wrap-reverse"
+        gap="2em"
+        p="0.5em"
+      >
+        <Stack spacing="4" w="26em">
           <div className="Discord-Head">
-            <h2>Nuestro Discord</h2>
+            <Heading size="lg">Nuestro Discord</Heading>
           </div>
           <div className="Discord-Body">
             <iframe
@@ -46,20 +68,26 @@ function Inicio() {
               solucionarlo.
             </p>
           </div>
-        </div>
-        <div className="sugerencias:">
+        </Stack>
+        <Stack spacing="4" justify="center" flex="1">
           <div className="TituloSugerencias">
-            <h2>Nuestros Proyectos:</h2>
+            <Heading size="lg">Nuestros Proyectos:</Heading>
           </div>
-          <div className="cartelera">
+          <Grid
+            templateColumns={{
+              base: 'repeat(auto-fit,minmax(10em,1fr))',
+              md: 'repeat(auto-fit,minmax(14em, 1fr))',
+              sm: 'repeat(auto-fit,mimax(12em, 1fr))',
+            }}
+            gap="1em"
+          >
             {proyectos.map((manga, index) => (
               <Carteles key={index} proyectos={manga} />
             ))}
-          </div>
-        </div>
-      </div>
-      <div className="Seccion3"></div>
-    </div>
+          </Grid>
+        </Stack>
+      </Flex>
+    </Box>
   );
 }
 

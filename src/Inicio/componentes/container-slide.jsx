@@ -1,34 +1,58 @@
 import '../styles/container-slide.css';
-
+import {
+  Box,
+  Text,
+  Heading,
+  Image,
+  HStack,
+  Container,
+  Stack,
+  Flex,
+} from '@chakra-ui/react';
 function ContainerSlide(props) {
   const { nombre, portada, resumen } = props.proyectos;
-  var nameCode = encodeURIComponent(nombre);
-  const fondo_img = {
-    backgroundImage: `url(https://pendejosapi.space/img/${nameCode}/${portada})`,
-    backgroundSize: 'cover',
-    color: '#363435',
-  };
+  var EncodeName = encodeURIComponent(nombre);
   return (
-    <div className="Slider">
-      <div className="container-slide" style={fondo_img}>
-        <div className="container-opacity">
-          <div className="portada-slide">
-            <img
-              src={`https://pendejosapi.space/img/${nombre}/${portada}`}
-              alt=""
-            />
-          </div>
-          <div className="info-slide">
-            <div className="Titulo-slide">
-              <h2>{nombre}</h2>
-            </div>
-            <div className="Resumen-slide">
-              <p>{resumen}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box
+      className="container-slide"
+      w={{
+        base: '20em',
+        md: '56em',
+        sm: '26em',
+      }}
+      h={{
+        base: '45em',
+        md: '380px',
+      }}
+      overflow="hidden"
+      flexShrink="0"
+      bgImage={`url(https://pendejosapi.space/img/${EncodeName}/${portada})`}
+      backgroundSize="cover"
+      backgroundRepeat="no-repeat"
+      backgroundPosition="center"
+    >
+      <HStack
+        justifyContent="space-around"
+        w="100%"
+        h="100%"
+        wrap="wrap"
+        bg="rgba(29, 29, 29, 0.85)"
+      >
+        <Container w="240px" h="320px" alignContent="center">
+          <Image
+            w="100%"
+            h="auto"
+            src={`https://pendejosapi.space/img/${nombre}/${portada}`}
+            alt=""
+            borderRadius="0.5em"
+          />
+        </Container>
+        <Stack p="1em" gap="4" w="40.5em" h="22.6em" justify="center">
+          <Heading size="lg">{nombre}</Heading>
+          <Text overflowY="auto">{resumen}</Text>
+        </Stack>
+      </HStack>
+    </Box>
   );
 }
 
