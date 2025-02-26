@@ -21,7 +21,7 @@ let Lector = () => {
     return (
       <Box className="Lector">
         <Heading>
-          El capitulo que buscas no esta disponible, con tacte con el admin UnU
+          El capítulo que buscas no está disponible, contacta con el admin UnU.
         </Heading>
       </Box>
     );
