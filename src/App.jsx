@@ -7,10 +7,19 @@ import { Box, Link as ChaKraLink, Image, Card } from '@chakra-ui/react';
 function App() {
   return (
     <div className="App">
-      <Box className="nav-bar" w="10em" p="1em">
+      <Box
+        className="nav-bar"
+        w="100%"
+        p="1em"
+        display="flex"
+        justifyContent="space-between"
+      >
         <ChaKraLink href="/">
-          <Image className="logo" src="/img/logo.png" alt="Logo.png" />
+          <Image className="logo" src="/img/logo.png" alt="Logo.png" w="10em" />
         </ChaKraLink>
+        <Box>
+          <Icon icon="flowbite:user-solid" style={{ fontSize: '2.5em' }} />
+        </Box>
       </Box>
       <Routes>
         <Route path="/" element={<Inicio />} />
