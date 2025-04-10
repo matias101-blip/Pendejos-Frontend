@@ -4,8 +4,13 @@ import Perfil_Project from './Perifl/Perfil';
 import Lector from './Lector/Lector';
 import { Icon } from '@iconify/react';
 import { Box, Link as ChaKraLink, Image, Card } from '@chakra-ui/react';
+import BoxSlider from './Inicio/componentes/box-slider';
+
+
 function App() {
   return (
+
+    
     <div className="App">
       <Box
         className="nav-bar"
@@ -36,6 +41,8 @@ function App() {
       >
         <h3>PendejosScan 2025</h3>
       </Card>
+
+      <BoxSlider></BoxSlider>
     </div>
   );
 }
