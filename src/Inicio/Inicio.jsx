@@ -18,7 +18,7 @@ function Inicio() {
   return (
     <Box className="container">
       <Stack className="Seccion1" spacing="8" align="center">
-        <Heading>Lo mas popular:</Heading>
+        <Heading>hunter eres una puta zorra</Heading>
         <HStack
           mb="1.2em"
           spacing="0"
